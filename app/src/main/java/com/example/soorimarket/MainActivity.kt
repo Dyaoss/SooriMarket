@@ -1,6 +1,13 @@
 package com.example.soorimarket
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.DialogInterface
+import android.media.AudioAttributes
+import android.media.RingtoneManager
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.Window
@@ -10,6 +17,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -27,7 +35,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        onBackPressedDispatcher.addCallback(this,onBackPressedCallback) // 뒤로가기 두번 누르면 종료된다
+        //알림버튼
+        binding.ivAlarm.setOnClickListener {
+            notification()
+        }
+
+
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback) // 뒤로가기 두번 누르면 종료된다
 
         val dataList = mutableListOf<MyItem>()
         dataList.add(
@@ -146,24 +160,64 @@ class MainActivity : AppCompatActivity() {
 
     // 뒤로가기 누르면 종료 다이얼로그 출력
 
-    private val onBackPressedCallback:OnBackPressedCallback = object :OnBackPressedCallback(true){
-        override fun handleOnBackPressed() {
-            val builder = AlertDialog.Builder(this@MainActivity)
-            builder.setTitle("종료")
-            builder.setMessage("정말 종료하시겠습니까?")
-            builder.setIcon(R.drawable.icon_alert)
-            
-            val listener = object :DialogInterface.OnClickListener{
-                override fun onClick(p0: DialogInterface?, p1: Int) {
-                    if(p1 == DialogInterface.BUTTON_POSITIVE){
-                        finish()
+    private val onBackPressedCallback: OnBackPressedCallback =
+        object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val builder = AlertDialog.Builder(this@MainActivity)
+                builder.setTitle("종료")
+                builder.setMessage("정말 종료하시겠습니까?")
+                builder.setIcon(R.drawable.icon_alert)
+
+                val listener = object : DialogInterface.OnClickListener {
+                    override fun onClick(p0: DialogInterface?, p1: Int) {
+                        if (p1 == DialogInterface.BUTTON_POSITIVE) {
+                            finish()
+                        }
                     }
                 }
+                builder.setPositiveButton("확인", listener)
+                builder.setNegativeButton("취소", null)
+                builder.show()
             }
-            builder.setPositiveButton("확인", listener)
-            builder.setNegativeButton("취소", null)
-            builder.show()
         }
+
+    //알림버튼
+    fun notification() {
+        val manager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+
+        val builder: NotificationCompat.Builder
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channelId = "one-channel"
+            val channelName = "My Channel One"
+            val channel = NotificationChannel(
+                channelId,
+                channelName,
+                NotificationManager.IMPORTANCE_DEFAULT
+            ).apply {
+                description = "My Channel One Decription"
+                setShowBadge(true)
+                val uri: Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+                val audioAttributes = AudioAttributes.Builder()
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .setUsage(AudioAttributes.USAGE_ALARM)
+                    .build()
+                setSound(uri, audioAttributes)
+                enableVibration(true)
+            }
+            manager.createNotificationChannel(channel)
+
+            builder = NotificationCompat.Builder(this, channelId)
+        } else {
+            builder = NotificationCompat.Builder(this)
+        }
+        builder.run {
+            setSmallIcon(R.mipmap.ic_launcher)
+            setWhen(System.currentTimeMillis())
+            setContentTitle("키워드 알림")
+            setContentText("설정한 키워드에 대한 알림이 도착했습니다!!")
+        }
+        manager.notify(11, builder.build())
+
     }
 
 
