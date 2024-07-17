@@ -2,8 +2,8 @@ package com.example.soorimarket
 
 data class MyItem(
     val aImage: Int,
-    val aName: Int,
-    val aRegion: Int,
+    val aName: String,
+    val aRegion: String,
     val aPrice: Int,
-    val aInfo: Int
+    val aInfo: String
 )

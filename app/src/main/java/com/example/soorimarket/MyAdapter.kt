@@ -41,10 +41,10 @@ class MyAdapter(val mItem: MutableList<MyItem>) : RecyclerView.Adapter<MyAdapter
     inner class Holder(val binding: ItemRecyclerviewBinding) :
         RecyclerView.ViewHolder(binding.root) {
         val imageView = binding.imageItem
-        val name = binding.tvItemName1
-        val region = binding.tvItemRegion1
-        val price = binding.tvItemPrice1
-        val commentNum = binding.tvCommentNum
-        val heartNum = binding.tvHeartNum
+        val name = binding.tvItemName
+        val region = binding.tvItemRegion
+        val price = binding.tvItemPrice
+        val commentNum = binding.chatNum
+        val heartNum = binding.heartNum
     }
 }
