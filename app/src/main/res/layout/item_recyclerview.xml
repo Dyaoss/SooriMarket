@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        tools:context=".MainActivity">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageItem"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/sample1" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_item_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/spoqa_han_sans_neo_medium"
+            android:hint="name"
+            android:maxLines="2"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cardview"
+            app:layout_constraintTop_toTopOf="@+id/cardview" />
+
+        <TextView
+            android:id="@+id/tv_item_region"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="region"
+            android:fontFamily="@font/spoqa_han_sans_neo_regular"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@id/tv_item_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_item_name" />
+
+        <TextView
+            android:id="@+id/tv_item_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/spoqa_han_sans_neo_bold"
+            android:hint="price"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/tv_item_region"
+            app:layout_constraintTop_toBottomOf="@id/tv_item_region" />
+
+        <ImageView
+            android:id="@+id/iv_chat"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="3dp"
+            android:src="@drawable/chat"
+            app:layout_constraintBottom_toBottomOf="@id/chat_num"
+            app:layout_constraintEnd_toStartOf="@id/chat_num" />
+
+
+        <TextView
+            android:id="@+id/chat_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:text="00"
+            android:fontFamily="@font/spoqa_han_sans_neo_regular"
+            app:layout_constraintBottom_toBottomOf="@id/iv_heart"
+            app:layout_constraintEnd_toStartOf="@id/iv_heart" />
+
+        <ImageView
+            android:id="@+id/iv_heart"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="3dp"
+            android:src="@drawable/heart"
+            app:layout_constraintBottom_toBottomOf="@id/heart_num"
+            app:layout_constraintEnd_toStartOf="@id/heart_num" />
+
+        <TextView
+            android:id="@+id/heart_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/spoqa_han_sans_neo_regular"
+            android:text="00"
+            app:layout_constraintBottom_toBottomOf="@id/cardview"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>
+
