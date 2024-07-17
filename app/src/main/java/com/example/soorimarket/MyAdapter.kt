@@ -30,6 +30,8 @@ class MyAdapter(val mItem: MutableList<MyItem>) : RecyclerView.Adapter<MyAdapter
         holder.name.text = mItem[position].aName
         holder.region.text = mItem[position].aRegion
         holder.price.setText("${dec.format(mItem[position].aPrice)}원")
+        holder.commentNum.text = mItem[position].chat.toString()
+        holder.heartNum.text = mItem[position].heart.toString()
     }
 
     override fun getItemId(position: Int): Long {

@@ -5,5 +5,7 @@ data class MyItem(
     val aName: String,
     val aRegion: String,
     val aPrice: Int,
-    val aInfo: String
+    val aInfo: String,
+    val chat: Int,
+    val heart: Int
 )
