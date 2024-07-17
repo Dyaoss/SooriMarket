@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.soorimarket.databinding.ItemRecyclerviewBinding
+import java.text.DecimalFormat
 
 class MyAdapter(val mItem: MutableList<MyItem>) : RecyclerView.Adapter<MyAdapter.Holder>() {
 
@@ -21,16 +22,17 @@ class MyAdapter(val mItem: MutableList<MyItem>) : RecyclerView.Adapter<MyAdapter
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.imageView.setOnClickListener{
-            itemClick?.onClick(it,position)
+        holder.imageView.setOnClickListener {
+            itemClick?.onClick(it, position)
         }
+        val dec = DecimalFormat("#,###")
         holder.imageView.setImageResource(mItem[position].aImage)
-        holder.name.text = mItem[position].aName.toString()
-        holder.region.text = mItem[position].aRegion.toString()
-        holder.price.text = mItem[position].aPrice.toString()
+        holder.name.text = mItem[position].aName
+        holder.region.text = mItem[position].aRegion
+        holder.price.setText("${dec.format(mItem[position].aPrice)}원")
     }
 
-    override fun getItemId(position: Int):Long{
+    override fun getItemId(position: Int): Long {
         return position.toLong()
     }
 
@@ -47,4 +49,6 @@ class MyAdapter(val mItem: MutableList<MyItem>) : RecyclerView.Adapter<MyAdapter
         val commentNum = binding.chatNum
         val heartNum = binding.heartNum
     }
+
+
 }
