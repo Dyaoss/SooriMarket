@@ -22,7 +22,7 @@ class MyAdapter(val mItem: MutableList<MyItem>) : RecyclerView.Adapter<MyAdapter
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.imageView.setOnClickListener {
+        holder.contents.setOnClickListener {
             itemClick?.onClick(it, position)
         }
         val dec = DecimalFormat("#,###")
@@ -45,6 +45,7 @@ class MyAdapter(val mItem: MutableList<MyItem>) : RecyclerView.Adapter<MyAdapter
     inner class Holder(val binding: ItemRecyclerviewBinding) :
         RecyclerView.ViewHolder(binding.root) {
         val imageView = binding.imageItem
+        val contents = binding.layoutContents
         val name = binding.tvItemName
         val region = binding.tvItemRegion
         val price = binding.tvItemPrice

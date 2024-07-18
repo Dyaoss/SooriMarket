@@ -4,6 +4,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
 import android.media.AudioAttributes
 import android.media.RingtoneManager
 import android.net.Uri
@@ -23,6 +24,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.soorimarket.databinding.ActivityMainBinding
+import com.google.android.engage.food.datamodel.ProductEntity
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,11 +37,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //알림버튼
+        //알림버튼 클릭 리스너
         binding.ivAlarm.setOnClickListener {
             notification()
         }
-
 
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback) // 뒤로가기 두번 누르면 종료된다
 
@@ -151,8 +152,9 @@ class MainActivity : AppCompatActivity() {
         //클릭이벤트
         adapter.itemClick = object : MyAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {
-                val name: String = dataList[position].aName.toString()
-                Toast.makeText(this@MainActivity, "$name 선택", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this@MainActivity, MyItemDetail::class.java)
+
+                intent.putExtra("data",dataList[position])
             }
         }
 
@@ -217,7 +219,6 @@ class MainActivity : AppCompatActivity() {
             setContentText("설정한 키워드에 대한 알림이 도착했습니다!!")
         }
         manager.notify(11, builder.build())
-
     }
 
 
