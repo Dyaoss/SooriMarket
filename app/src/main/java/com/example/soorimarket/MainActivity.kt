@@ -44,9 +44,10 @@ class MainActivity : AppCompatActivity() {
 
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback) // 뒤로가기 두번 누르면 종료된다
 
-        val dataList = mutableListOf<MyItem>()
+        val dataList = ArrayList<MyItem>()
         dataList.add(
             MyItem(
+                1,
                 R.drawable.sample1,
                 "산지 한달된 선풍기 팝니다",
                 "서울 서대문구 창천동",
@@ -56,6 +57,7 @@ class MainActivity : AppCompatActivity() {
         )
         dataList.add(
             MyItem(
+                2,
                 R.drawable.sample2,
                 "김치냉장고",
                 "인천 계양구 귤현동",
@@ -65,6 +67,7 @@ class MainActivity : AppCompatActivity() {
         )
         dataList.add(
             MyItem(
+                3,
                 R.drawable.sample3,
                 "샤넬 카드지갑",
                 "수성구 범어동",
@@ -74,6 +77,7 @@ class MainActivity : AppCompatActivity() {
         )
         dataList.add(
             MyItem(
+                4,
                 R.drawable.sample4,
                 "금고",
                 "해운대구 우제2동",
@@ -83,6 +87,7 @@ class MainActivity : AppCompatActivity() {
         )
         dataList.add(
             MyItem(
+                5,
                 R.drawable.sample5,
                 "갤럭시Z플립3 팝니다",
                 "연제구 연산제8동",
@@ -92,6 +97,7 @@ class MainActivity : AppCompatActivity() {
         )
         dataList.add(
             MyItem(
+                6,
                 R.drawable.sample6,
                 "프라다 복조리백",
                 "수원시 영통구 원천동",
@@ -101,6 +107,7 @@ class MainActivity : AppCompatActivity() {
         )
         dataList.add(
             MyItem(
+                7,
                 R.drawable.sample7,
                 "울산 동해오션뷰 60평 복층 펜트하우스 1일 숙박권 펜션 힐링 숙소 별장",
                 "남구 옥동",
@@ -112,6 +119,7 @@ class MainActivity : AppCompatActivity() {
         )
         dataList.add(
             MyItem(
+                8,
                 R.drawable.sample8,
                 "샤넬 탑핸들 가방",
                 "동래구 온천제2동",
@@ -123,6 +131,7 @@ class MainActivity : AppCompatActivity() {
         )
         dataList.add(
             MyItem(
+                9,
                 R.drawable.sample9,
                 "4행정 엔진분무기 판매합니다.",
                 "원주시 명륜2동",
@@ -134,6 +143,7 @@ class MainActivity : AppCompatActivity() {
         )
         dataList.add(
             MyItem(
+                10,
                 R.drawable.sample10,
                 "셀린느 버킷 가방",
                 "중구 동화동",
@@ -154,8 +164,12 @@ class MainActivity : AppCompatActivity() {
             override fun onClick(view: View, position: Int) {
                 val intent = Intent(this@MainActivity, MyItemDetail::class.java)
 
-                intent.putExtra("data",dataList[position])
+                intent.putParcelableArrayListExtra("data",java.util.ArrayList(dataList))
+
+                startActivity(intent)
             }
+
+
         }
 
     }
