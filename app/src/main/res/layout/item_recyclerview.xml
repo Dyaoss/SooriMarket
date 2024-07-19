@@ -8,6 +8,7 @@
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_contents"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp"
@@ -49,8 +50,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:hint="region"
             android:fontFamily="@font/spoqa_han_sans_neo_regular"
+            android:hint="region"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="@id/tv_item_name"
             app:layout_constraintTop_toBottomOf="@id/tv_item_name" />
@@ -82,8 +83,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
-            android:text="00"
             android:fontFamily="@font/spoqa_han_sans_neo_regular"
+            android:text="00"
             app:layout_constraintBottom_toBottomOf="@id/iv_heart"
             app:layout_constraintEnd_toStartOf="@id/iv_heart" />
 
