@@ -19,7 +19,6 @@ class MyItemDetail : AppCompatActivity() {
             finish()
         }
 
-
         val myItem = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             intent.getParcelableExtra("data", MyItem::class.java)
         } else {
