@@ -159,7 +159,7 @@ class MainActivity : AppCompatActivity() {
         val adapter = MyAdapter(dataList)
         binding.recyclerview.adapter = adapter
         binding.recyclerview.layoutManager = LinearLayoutManager(this)
-        binding.recyclerview.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
+        binding.recyclerview.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL)) // 하단 구분선
 
         //클릭이벤트
         adapter.itemClick = object : MyAdapter.ItemClick {

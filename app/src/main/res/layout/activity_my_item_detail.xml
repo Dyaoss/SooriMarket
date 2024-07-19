@@ -80,7 +80,7 @@
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/spoqa_han_sans_neo_medium"
                     android:hint="ID"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     app:layout_constraintStart_toEndOf="@id/profile_cardview"
                     app:layout_constraintTop_toTopOf="@id/profile_cardview" />
 
@@ -92,7 +92,7 @@
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/spoqa_han_sans_neo_regular"
                     android:hint="REGION"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     app:layout_constraintStart_toEndOf="@id/profile_cardview"
                     app:layout_constraintTop_toBottomOf="@id/tv_detail_id" />
 
@@ -214,7 +214,7 @@
             android:fontFamily="@font/spoqa_han_sans_neo_bold"
             android:hint="price"
             android:textColor="@color/black"
-            android:textSize="28dp"
+            android:textSize="23sp"
             app:layout_constraintBottom_toBottomOf="@id/iv_bottom_heart"
             app:layout_constraintStart_toEndOf="@id/bottom_divide_line"
             app:layout_constraintTop_toTopOf="@id/iv_bottom_heart" />
