@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class MyItem(
-    val aId : Int,
+    val aSeller : String,
     val aImage: Int,
     val aName: String,
     val aRegion: String,

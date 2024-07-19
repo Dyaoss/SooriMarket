@@ -1,15 +1,10 @@
 package com.example.soorimarket
 
-import android.content.Intent
+import android.os.Build
 import android.os.Bundle
-import android.os.Parcelable
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.soorimarket.databinding.ActivityMainBinding
 import com.example.soorimarket.databinding.ActivityMyItemDetailBinding
-import kotlinx.parcelize.Parcelize
+import java.text.DecimalFormat
 
 class MyItemDetail : AppCompatActivity() {
 
@@ -24,7 +19,25 @@ class MyItemDetail : AppCompatActivity() {
             finish()
         }
 
-        var user = intent?.getParcelableArrayListExtra<MyItem>("data")
+
+        val myItem = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            intent.getParcelableExtra("data", MyItem::class.java)
+        } else {
+            intent.getParcelableExtra("data")
+        } ?: return
+
+
+        val dec = DecimalFormat("#,###")
+
+        binding.ivDetailMainImage.setImageResource(myItem.aImage)
+        binding.tvItemDetailName.text = myItem.aName
+        binding.tvDetailId.text = myItem.aSeller
+        binding.tvDetailItemPrice.setText("${dec.format(myItem.aPrice)}원")
+        binding.tvDetailRegion.text = myItem.aRegion
+        binding.tvItemDetailInfo.text = myItem.aInfo
+
+
+
 
 
 
