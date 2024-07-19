@@ -33,17 +33,17 @@
                     android:layout_height="300dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/sample1"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/iv_back"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/left_arrow"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/left_arrow"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:tint="@color/white" />
@@ -162,7 +162,7 @@
                     android:id="@+id/tv_item_detail_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
                     android:fontFamily="@font/spoqa_han_sans_neo_medium"
                     android:hint="Item Info"
                     android:textSize="20sp"
