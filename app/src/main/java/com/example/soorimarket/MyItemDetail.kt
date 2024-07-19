@@ -37,10 +37,5 @@ class MyItemDetail : AppCompatActivity() {
         binding.tvItemDetailInfo.text = myItem.aInfo
 
 
-
-
-
-
-
     }
 }

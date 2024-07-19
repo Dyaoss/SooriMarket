@@ -171,10 +171,7 @@ class MainActivity : AppCompatActivity() {
 
                 startActivity(intent)
             }
-
-
         }
-
     }
 
     // 뒤로가기 누르면 종료 다이얼로그 출력
